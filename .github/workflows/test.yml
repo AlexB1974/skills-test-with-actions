@@ -9,22 +9,21 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
- steps:
-  - name: Clona el repositorio
-    uses: actions/checkout@v4
+    steps:
+      - name: Clona el repositorio
+        uses: actions/checkout@v4
 
-  - name: Instala Node.js
-    uses: actions/setup-node@v4
-    with:
-      node-version: 20
+      - name: Instala Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-  - name: Instala remark y remark-lint
-    run: npm install -g remark-cli remark-preset-lint-recommended
+      - name: Instala remark y remark-lint
+        run: npm install -g remark-cli remark-preset-lint-recommended
 
-  - name: Ejecuta linters en archivos Markdown
-    run: remark . --frail --quiet
+      - name: Ejecuta linters en archivos Markdown
+        run: remark . --frail --quiet
 
-     
 
 
 
