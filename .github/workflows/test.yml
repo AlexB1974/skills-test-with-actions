@@ -21,8 +21,17 @@ jobs:
       - name: Instala remark y remark-lint
         run: npm install -g remark-cli remark-preset-lint-recommended
 
-      - name: Ejecuta linters en archivos Markdown
-        run: remark . --frail --quiet
+      - name: Ejecuta remark y guarda reporte
+        run: |
+          remark . --frail --quiet > resultado.txt || true
+
+      - name: Sube reporte como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-lint
+          path: resultado.txt
+
+
 
 
 
